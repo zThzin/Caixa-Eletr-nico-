@@ -1,11 +1,15 @@
-código criado dia 14/10
-descrição:
-este código imprime a quantidade de cédulas digitadas pelo usuário, assim como depositar, sacar e encerrar o comando, de forma que seja coerente conforme a quantidade de cedulas digitadas.
-
-Thiago José de Sousa Lima
-
 
 #include <stdio.h>
+
+/* 
+ * Aluno: Thiago José de Sousa Lima 
+ * Matrícula: 8124601
+ * Exercício-programa 1 — Caixa Eletrônico
+ * Programação Avançada - 2024 
+ * Professor: Bruno Perillo
+ * Descrição: Este programa simula um caixa eletrônico, permitindo ao usuário realizar saques e depósitos.
+ * O usuário digitara a quantidade de cédulas e o programa imprimirá a quantidade correspondente.
+ */
 
 #define NUM_CEDULAS 7
 
