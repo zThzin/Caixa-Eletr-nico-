@@ -1,3 +1,10 @@
+código criado dia 14/10
+descrição:
+este código imprime a quantidade de cédulas digitadas pelo usuário, assim como depositar, sacar e encerrar o comando, de forma que seja coerente conforme a quantidade de cedulas digitadas.
+
+Thiago José de Sousa Lima
+
+
 #include <stdio.h>
 
 #define NUM_CEDULAS 7
