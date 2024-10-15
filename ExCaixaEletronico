@@ -1,0 +1,68 @@
+#include <stdio.h>
+
+#define NUM_CEDULAS 7
+
+int main() {
+    int cedulas[NUM_CEDULAS] = {0}, valores[NUM_CEDULAS] = {100, 50, 20, 10, 5, 2, 1};
+
+    // Ler a quantidade inicial de cédulas
+    for (int i = 0; i < NUM_CEDULAS; i++) {
+        printf("Quantidade de cédulas de R$ %d,00: ", valores[i]);
+        scanf("%d", &cedulas[i]);
+    }
+
+    while (1) {
+        int operacao;
+        printf("Escolha (0: saque, 1: depósito, -1: encerrar): ");
+        scanf("%d", &operacao);
+        
+        if (operacao == -1) break;
+
+        if (operacao == 0) { // Saque
+            int valorSaque;
+            printf("Valor a ser sacado: R$ ");
+            scanf("%d", &valorSaque);
+            int notasEntregues[NUM_CEDULAS] = {0};
+
+            for (int i = 0; i < NUM_CEDULAS && valorSaque > 0; i++) {
+                while (valorSaque >= valores[i] && cedulas[i] > 0) {
+                    valorSaque -= valores[i];
+                    cedulas[i]--;
+                    notasEntregues[i]++;
+                }
+            }
+
+            if (valorSaque == 0) {
+                printf("Saque bem-sucedido:\n");
+                for (int i = 0; i < NUM_CEDULAS; i++) {
+                    if (notasEntregues[i] > 0)
+                        printf("%d cédula(s) de R$ %d,00\n", notasEntregues[i], valores[i]);
+                }
+            } else {
+                // Reverter cédulas
+                for (int i = 0; i < NUM_CEDULAS; i++)
+                    cedulas[i] += notasEntregues[i];
+                printf("Saque não realizado. Valor não disponível.\n");
+            }
+        } else if (operacao == 1) { // Depósito
+            for (int i = 0; i < NUM_CEDULAS; i++) {
+                int deposito;
+                printf("Quantidade de cédulas de R$ %d,00: ", valores[i]);
+                scanf("%d", &deposito);
+                cedulas[i] += deposito;
+            }
+            printf("Depósito realizado.\n");
+        } else {
+            printf("Operação inválida.\n");
+        }
+
+        // Exibir cédulas restantes
+        printf("Cédulas no caixa:\n");
+        for (int i = 0; i < NUM_CEDULAS; i++) {
+            printf("R$ %d,00: %d cédula(s)\n", valores[i], cedulas[i]);
+        }
+    }
+
+    printf("Encerrando o programa.\n");
+    return 0;
+}
